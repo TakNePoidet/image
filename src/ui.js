@@ -140,8 +140,12 @@ export default class Ui {
     const tag = /\.mp4$/.test(url) ? 'VIDEO' : 'IMG';
 
     let attributes = {
-      src: url
-    };
+			src: url
+		}
+
+		if (this.config.generateUrl) {
+			attributes.src = this.config.generateUrl(url)
+		}
 
     /**
      * We use eventName variable because IMG and VIDEO tags have different event to be called on source load
